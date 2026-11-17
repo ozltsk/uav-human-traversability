@@ -1,0 +1,106 @@
+{
+ "purpose": "Фіксація налаштувань обробки перед підтверджувальною серією E6 (MDPI Drones)",
+ "revisions": [
+  {
+   "revision": 1,
+   "frozen_at": "2026-11-10T18:04:45",
+   "reason": "перша фіксація",
+   "settings": {
+    "export": {
+     "positions": "imu",
+     "fov_deg": 55.5,
+     "calibration": "calib/*.json за серійним номером дрона"
+    },
+    "ac1_buildmap": {
+     "voxel_m": 0.1,
+     "max_eps": 0.012,
+     "інші параметри": "типові build_map у ac1_evacmap/app.py",
+     "depth_model": "depth-anything/Depth-Anything-V2-Small-hf",
+     "seg_model": "nvidia/segformer-b0-finetuned-ade-512-512"
+    },
+    "poses_H_W_v": {
+     "walk": [
+      1.75,
+      0.5,
+      1.2
+     ],
+     "crouch": [
+      1.2,
+      0.5,
+      0.5
+     ],
+     "crawl": [
+      0.5,
+      0.6,
+      0.25
+     ]
+    },
+    "estimators": {
+     "М3": {
+      "rule_state_map": {
+       "mu": 0.0,
+       "u_max": 1.0
+      },
+      "route_kappa": 0.0
+     },
+     "М4": {
+      "rule_state_map": {
+       "mu": "safety_margin(eps), mu0=1.0, range_m=2.0; eps=0.03, якщо eps<=0",
+       "u_max": 0.9
+      },
+      "route_kappa": 6.0
+     },
+     "М5": {
+      "model": "runs/ac2_models/travnet.pt",
+      "theta": 0.8,
+      "route_kappa": 6.0
+     },
+     "М5р": {
+      "model": "runs/ac2_models_rmtt/travnet.pt",
+      "theta": 0.8,
+      "route_kappa": 6.0
+     }
+    },
+    "primary_estimator": "М4",
+    "passage_state": {
+     "band_half_m": 0.3,
+     "trim": 0.15,
+     "rule": "мода оглянутих клітинок у смузі"
+    },
+    "route": {
+     "planner": "route_astar.plan_route",
+     "goal_radius_m": 0.4,
+     "start_goal": "з ground_truth/<сцена>_route.csv, записаних виконавицею до польотів"
+    },
+    "route_safety": {
+     "script": "field_analysis/route_safety2.py (критерій з урахуванням пози)",
+     "object_base_shrink_m": 0.05,
+     "min_gap_m": 0.5
+    },
+    "primary_outcome": "частка обльотів, де М4 дав маршрут без небезпечних клітинок; для сцен без прохідного шляху правильна відповідь -- «маршруту немає»",
+    "flight_inclusion": "усі польоти E6 з outcome ok і всіма кадрами зйомки; повтори невдалих -- за журналом; жоден придатний політ не вилучається після перегляду результатів",
+    "scene_specific": "координати бар'єра, зони оцінки карти й точок start/goal беруться з ground_truth E6; це дані сцени, а не налаштування методу",
+    "S9_S10": "карти польотів A і B зводяться в одну в координатах кімнати без додаткового підбору параметрів",
+    "aruco": "положення за маркерами використовується лише для оцінки похибки числення шляху, у карту основного результату не йде"
+   },
+   "sha256": {
+    "ac1_evacmap/app.py": "5553c7864c4411cce2cf8a1b483a514cf3ec5480df6983ba0daaaf2165c55137",
+    "ac1_evacmap/perception.py": "bee1d662966f8da9cc93412b8110378b2e3ced67ee357f662e9cfaad54099c03",
+    "ac1_evacmap/mono_depth.py": "9b207613aaf163ac8eca45d6ef50ab143107cf814eb490e1b63c157846b1c492",
+    "ac1_evacmap/occupancy_map.py": "4d56b7910608ba5f7c9f1153e802f0f10353547f142d6c0f5b08f1f72c93bfa1",
+    "ac1_evacmap/flight_log.py": "d2e0f5e758232d7b96964d7279fa52fad417bb15448de4fdfc4de319bfa62ae2",
+    "ac2_evacroute/map_layers.py": "7587587e6747812736ade14e335dac8d7b07b0d6db0bb2694dd08508979d4b1c",
+    "ac2_evacroute/pose_model.py": "6745a8aaf6fc7b8f030821f430071d524cd07706dd24d2d264592112d7bd5ab8",
+    "ac2_evacroute/nn_traversability.py": "6e328fe5ea59388b575ba81715127bf1c8dda7861d322ccdb019f1cc59f8ac88",
+    "ac2_evacroute/route_astar.py": "babd52e85095ce4d3145a7200677ebd04c2471fe7704f03930e93eb5079f3c73",
+    "field_analysis/field_eval.py": "62fc0d0bea02e8481bd4a4b1a307d440a2a468463519245f19c6cf1645177ccc",
+    "field_analysis/aggregate_eval.py": "2db862b502bf2684b731cd1936a505a8b4738281f64f012712d6336f1ef1189b",
+    "field_analysis/route_safety2.py": "81be18a9b06427b220f50490788ac8c73294d6a812d37ad4d7b326d65eaf5491",
+    "rmtt_field/export_field.py": "f4ca27a2df78e82e8b4a44a9e4c4a501e1a00b8089867f487968a676c5a281f9",
+    "rmtt_field/postprocess.py": "f5b14f32d465d801e64853fee2f717578eb337128fa2f249094a98e5e210cace",
+    "runs/ac2_models/travnet.pt": "1472e84f396d4e58e2d86adebe53936fab49ad27cfead64eff7cba3259eb95dd",
+    "runs/ac2_models_rmtt/travnet.pt": "608251205fdcbd1bcc925922007f5e4dbba7b1b7e2a8d66aedf194f20743f699"
+   }
+  }
+ ]
+}

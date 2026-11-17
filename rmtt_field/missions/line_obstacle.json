@@ -1,0 +1,15 @@
+{
+  "type": "line",
+  "height_m": 1.2,
+  "distance_m": 3.0,
+  "speed_cm_s": 20,
+  "settle_s": 1.5,
+  "pre_hover_s": 1.5,
+  "post_hover_s": 1.0,
+  "safety": {
+    "min_clear_m": 0.5,
+    "on_block": "land"
+  },
+  "name": "line_obstacle",
+  "comment": "E4b: висока перешкода впоперек лінії за 2,0 м від старту; дрон має зупинитися не ближче 0,5 м і сісти."
+}

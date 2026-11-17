@@ -1,0 +1,50 @@
+{
+  "type": "survey",
+  "name": "survey_example",
+  "comment": "Приклад. Для кожної сцени місію генерує make_mission.py з перевіркою відстаней до предметів.",
+  "room_size": [
+    8.0,
+    6.0,
+    3.0
+  ],
+  "origin": [
+    1.0,
+    1.0
+  ],
+  "heading_deg": 0.0,
+  "waypoints": [
+    [
+      1.0,
+      1.0
+    ],
+    [
+      2.5,
+      1.0
+    ],
+    [
+      2.5,
+      2.5
+    ],
+    [
+      1.0,
+      2.5
+    ]
+  ],
+  "height_m": 1.2,
+  "speed_cm_s": 30,
+  "turns": 4,
+  "settle_s": 1.5,
+  "capture_hold_s": 0.6,
+  "camera": {
+    "hfov_deg": 55.5,
+    "tilt_deg": 10.0,
+    "yaw_sign": -1,
+    "offset_m": 0.0,
+    "calib": null,
+    "undistort": true
+  },
+  "safety": {
+    "min_clear_m": 0.5,
+    "on_block": "land"
+  }
+}
