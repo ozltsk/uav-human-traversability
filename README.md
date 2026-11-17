@@ -5,7 +5,11 @@ Flight software, mapping and passability code, and the evaluation scripts of the
 Traversability" (submitted to *Drones*, MDPI).
 
 The flight records, the tape-measured ground truth and the photographs of the scenes are a separate dataset on
-Zenodo: **https://doi.org/10.5281/zenodo.24313084**.
+Zenodo: https://doi.org/10.5281/zenodo.24313084. Access to its files is restricted, because the frames and
+photographs show a private room; the corresponding author of the article grants it on reasonable request.
+
+The code runs without the dataset: `rmtt_field/test_field.py` checks the flight software on an emulator, and
+`ac2_evacroute/scene_gen.py` generates the synthetic scenes on which TravNet was trained.
 
 ## What is here
 
@@ -84,4 +88,4 @@ emergency keys at hand.
 
 ## Licence
 
-Code: MIT. Dataset: CC BY 4.0 ([see Zenodo](https://doi.org/10.5281/zenodo.24313084)).
+Code: MIT. Dataset: see the Zenodo record (access on request).

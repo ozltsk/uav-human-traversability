@@ -2,14 +2,20 @@ cff-version: 1.2.0
 message: "If you use this software, please cite the article and the dataset."
 title: "Micro-UAV monocular mapping for indoor human traversability: flight software and evaluation code"
 authors:
+  - family-names: Manziuk
+    given-names: Eduard
   - family-names: Mazurets
     given-names: Olexander
   - family-names: Molchanova
     given-names: Maryna
-  - family-names: Manziuk
-    given-names: Eduard
+  - family-names: Kashperuk
+    given-names: Tetiana
   - family-names: Zalutska
     given-names: Olha
 license: MIT
-date-released: "2026-11-16"
-# doi: fill in the Zenodo DOI of the dataset or of the software release
+date-released: "2026-11-17"
+repository-code: "https://github.com/ozltsk/uav-human-traversability"
+references:
+  - type: dataset
+    title: "Field surveys of a classroom with RoboMaster TT micro-UAVs: records, measured ground truth and results"
+    doi: 10.5281/zenodo.24313084
