@@ -5,7 +5,7 @@ Flight software, mapping and passability code, and the evaluation scripts of the
 Traversability" (submitted to *Drones*, MDPI).
 
 The flight records, the tape-measured ground truth and the photographs of the scenes are a separate dataset on
-Zenodo: **DOI to be added**.
+Zenodo: **https://doi.org/10.5281/zenodo.24313084**.
 
 ## What is here
 
@@ -84,4 +84,4 @@ emergency keys at hand.
 
 ## Licence
 
-Code: MIT. Dataset: CC BY 4.0 (see Zenodo).
+Code: MIT. Dataset: CC BY 4.0 ([see Zenodo](https://doi.org/10.5281/zenodo.24313084)).
